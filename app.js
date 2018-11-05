@@ -21,7 +21,7 @@ client.on("message", (msg) => {
     if(!msg.a.startsWith(prefix)) return;
     var args = msg.a.slice(prefix.length).split(/ +/);
     var command = args.shift().toLowerCase();
-
+//ok
     if(!client.commands.has(command)) return;
 
     if(!client.cooldowns.has(command.name)) {
