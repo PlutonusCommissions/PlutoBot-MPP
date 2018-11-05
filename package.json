@@ -1,0 +1,15 @@
+{
+  "name": "plutobot",
+  "version": "1.1.0",
+  "description": "A bot for multiplayerpiano.com.",
+  "main": "app.js",
+  "dependencies": {
+    "ws": "^6.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "echo Starting! && node app.js"
+  },
+  "author": "Plutonus",
+  "license": "GPL-3.0"
+}
