@@ -6,6 +6,7 @@
 const WebSocket = require("ws");
 const EventEmitter = require('events');
 const { Events } = require("./util/Constants");
+const config = require("../data/config.json");
 
 class Client extends EventEmitter {
     constructor() {
@@ -25,6 +26,7 @@ class Client extends EventEmitter {
             readyAt: null
         }
 
+        this.room = undefined;
         this.uri = "ws://www.multiplayerpiano.com";
         this.ws = undefined;
         this.connected = false;
@@ -52,7 +54,7 @@ class Client extends EventEmitter {
             self.emit(Events.DEBUG, `Connection to MultiplayerPiano was lost.`)
         });
 
-        this.ws.addEventListener("open", () => {
+        this.ws.addEventListener("open", async () => {
             self.stats.readyAt = Date.now();
             self.connected = true;
 
@@ -72,7 +74,8 @@ class Client extends EventEmitter {
             }, 200);
 
             self.emit(Events.DEBUG, `Connected!`);
-            this.sendArray([{ m: "ch", _id: "test/PlutoDev", set: undefined }]);
+            await self.setRoom("lobby");
+            self.sendChat("Ready!");
         });
         this.ws.addEventListener("message", function(evt) {
             var transmission = JSON.parse(evt.data);
@@ -87,19 +90,24 @@ class Client extends EventEmitter {
 
     }
 
-    send(raw) {
-        if (this.connected) this.ws.send(raw);
+    async send(raw) {
+        if (this.connected) await this.ws.send(raw);
     }
 
-    sendArray(arr) {
-        this.send(JSON.stringify(arr));
+    async sendArray(arr) {
+        await this.send(JSON.stringify(arr));
     }
 
-    sendChat(msg) {
-        this.sendArray([{
+    async sendChat(msg) {
+        await this.sendArray([{
             m: "a",
-            message: msg
+            message: `[${this.userData.displayName}]: ${msg}`
         }]);
+    }
+
+    async setRoom(id) {
+        await this.sendArray([{ m: "ch", _id: id, set: undefined }]);
+        this.room = id;
     }
 }
 
