@@ -3,6 +3,7 @@ module.exports = {
     cooldown: 10,
     description: "Displays the bot's commands or info about a specific command.",
     usage: "[command]",
+    admin: false,
     execute(client, message, args) {
         const { prefix } = require("../config.json");
 
