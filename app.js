@@ -2,7 +2,7 @@ const fs            = require("fs");
 const PlutoBot      = require("./PlutoBot/PlutoBot");
 const client        = new PlutoBot.Client();
 const collection    = require("./PlutoBot/util/Collection");
-const { prefix }    = require("./data/config.json");
+const config        = require("./data/config.json");
 
 client.commands = new collection();
 const commandFiles = fs.readdirSync('./data/commands').filter(file => file.endsWith('.js'));
@@ -18,11 +18,15 @@ client.on("debug", (text) => {
 });
 
 client.on("message", (msg) => {
-    if(!msg.a.startsWith(prefix)) return;
-    var args = msg.a.slice(prefix.length).split(/ +/);
+    if(!msg.a.startsWith(config.prefix)) return;
+    var args = msg.a.slice(config.prefix.length).split(/ +/);
     var command = args.shift().toLowerCase();
     
     if(!client.commands.has(command)) return;
+
+    if(client.commands.get(command).admin) {
+        if(config.masters.indexOf(msg.p.name) < 0) return client.sendChat(`You don't have permission to use this command, ${msg.p.name}.`);
+    }
 
     if(!client.cooldowns.has(command.name)) {
         client.cooldowns.set(command.name, new collection());
