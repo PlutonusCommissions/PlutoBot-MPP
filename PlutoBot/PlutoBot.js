@@ -117,7 +117,7 @@ class Client extends EventEmitter {
         }]);
     }
 
-    setRoom(id) {
+    async setRoom(id) {
         this.sendArray([{ m: "ch", _id: id, set: undefined }]);
         this.room = id;
     }
