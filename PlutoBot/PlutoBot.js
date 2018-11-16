@@ -15,11 +15,9 @@ class Client extends EventEmitter {
         super();
 
         this.userData = {
-            displayName: "PlutoBot",
-            id: undefined,
-            _id: undefined,
-            channel: undefined
+            displayName: "PlutoBot"
         }
+
         this.notes = {
             noteBuffer: [],
             noteBufferTime: 0
@@ -107,6 +105,15 @@ class Client extends EventEmitter {
         await this.sendArray([{
             m: "a",
             message: `[${this.userData.displayName}]: ${msg}`
+        }]);
+    }
+
+    async setName(name) {
+        await this.sendArray([{
+            "m": "userset",
+            "set": {
+                "name": name
+            }
         }]);
     }
 
