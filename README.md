@@ -25,4 +25,3 @@ Once finished:
 
 To start the bot, in the command prompt or powershell, run the following command:
 `node app.js`
->>>>>>> master
