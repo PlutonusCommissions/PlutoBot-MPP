@@ -8,8 +8,10 @@ const EventEmitter = require('events');
 const { Events } = require("./util/Constants");
 const config = require("../data/config.json");
 
+console.log("Welcome to PlutoBot!\n");
+
 class Client extends EventEmitter {
-    constructor() {
+    constructor(options = {}) {
         super();
 
         this.userData = {
@@ -33,6 +35,8 @@ class Client extends EventEmitter {
         this.heartbeat = undefined;
         this.noteFlushInterval = undefined;
         this.serverTimeOffset = 0;
+
+        this.options = options;
     }
 
     get uptime() {
@@ -74,8 +78,9 @@ class Client extends EventEmitter {
             }, 200);
 
             self.emit(Events.DEBUG, `Connected!`);
-            await self.setRoom("lobby");
+            await self.setRoom(self.options.room || "lobby");
             self.sendChat("Ready!");
+            self.emit(Events.READY);
         });
         this.ws.addEventListener("message", function(evt) {
             var transmission = JSON.parse(evt.data);
@@ -105,8 +110,8 @@ class Client extends EventEmitter {
         }]);
     }
 
-    async setRoom(id) {
-        await this.sendArray([{ m: "ch", _id: id, set: undefined }]);
+    setRoom(id) {
+        this.sendArray([{ m: "ch", _id: id, set: undefined }]);
         this.room = id;
     }
 }
