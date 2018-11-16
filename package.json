@@ -11,5 +11,14 @@
     "start": "echo Starting! && node app.js"
   },
   "author": "Plutonus",
-  "license": "GPL-3.0"
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlutonusCommissions/PlutoBot-MPP.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/PlutonusCommissions/PlutoBot-MPP/issues"
+  },
+  "homepage": "https://github.com/PlutonusCommissions/PlutoBot-MPP#readme"
 }

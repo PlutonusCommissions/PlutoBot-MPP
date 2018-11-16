@@ -6,6 +6,19 @@
 const WebSocket = require("ws");
 const EventEmitter = require('events');
 const { Events } = require("./util/Constants");
+<<<<<<< HEAD
+
+class Client extends EventEmitter {
+    constructor() {
+        super();
+
+        this.userData = {
+            displayName: "PlutoBot",
+            id: undefined,
+            _id: undefined,
+            channel: undefined
+        }
+=======
 const config = require("../data/config.json");
 
 console.log("Welcome to PlutoBot!\n");
@@ -18,6 +31,7 @@ class Client extends EventEmitter {
             displayName: "PlutoBot"
         }
 
+>>>>>>> master
         this.notes = {
             noteBuffer: [],
             noteBufferTime: 0
@@ -26,15 +40,21 @@ class Client extends EventEmitter {
             readyAt: null
         }
 
+<<<<<<< HEAD
+=======
         this.room = undefined;
+>>>>>>> master
         this.uri = "ws://www.multiplayerpiano.com";
         this.ws = undefined;
         this.connected = false;
         this.heartbeat = undefined;
         this.noteFlushInterval = undefined;
         this.serverTimeOffset = 0;
+<<<<<<< HEAD
+=======
 
         this.options = options;
+>>>>>>> master
     }
 
     get uptime() {
@@ -56,7 +76,11 @@ class Client extends EventEmitter {
             self.emit(Events.DEBUG, `Connection to MultiplayerPiano was lost.`)
         });
 
+<<<<<<< HEAD
+        this.ws.addEventListener("open", () => {
+=======
         this.ws.addEventListener("open", async () => {
+>>>>>>> master
             self.stats.readyAt = Date.now();
             self.connected = true;
 
@@ -76,9 +100,13 @@ class Client extends EventEmitter {
             }, 200);
 
             self.emit(Events.DEBUG, `Connected!`);
+<<<<<<< HEAD
+            this.sendArray([{ m: "ch", _id: "test/PlutoDev", set: undefined }]);
+=======
             await self.setRoom(self.options.room || "lobby");
             setTimeout(() => {self.sendChat("Ready!")}, 2000);
             self.emit(Events.READY);
+>>>>>>> master
         });
         this.ws.addEventListener("message", function(evt) {
             var transmission = JSON.parse(evt.data);
@@ -93,6 +121,22 @@ class Client extends EventEmitter {
 
     }
 
+<<<<<<< HEAD
+    send(raw) {
+        if (this.connected) this.ws.send(raw);
+    }
+
+    sendArray(arr) {
+        this.send(JSON.stringify(arr));
+    }
+
+    sendChat(msg) {
+        this.sendArray([{
+            m: "a",
+            message: msg
+        }]);
+    }
+=======
     async send(raw) {
         if (this.connected) await this.ws.send(raw);
     }
@@ -121,6 +165,7 @@ class Client extends EventEmitter {
         this.sendArray([{ m: "ch", _id: id, set: undefined }]);
         this.room = id;
     }
+>>>>>>> master
 }
 
 module.exports = {
