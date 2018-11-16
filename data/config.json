@@ -1,3 +1,9 @@
 {
+<<<<<<< HEAD
     "prefix": ";"
+=======
+    "prefix": ";",
+    "masters": ["40f9542ea482f1437da8dbd6"],
+    "priviledged": []
+>>>>>>> master
 }

@@ -4,12 +4,33 @@
   "description": "A bot for multiplayerpiano.com.",
   "main": "app.js",
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "chalk": "^2.4.1",
+    "moment": "^2.22.2",
+>>>>>>> master
     "ws": "^6.1.0"
   },
   "devDependencies": {},
   "scripts": {
+<<<<<<< HEAD
     "start": "echo Starting! && node app.js"
   },
   "author": "Plutonus",
   "license": "GPL-3.0"
+=======
+    "start": "node app.js"
+  },
+  "author": "Plutonus",
+  "license": "GPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PlutonusCommissions/PlutoBot-MPP.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/PlutonusCommissions/PlutoBot-MPP/issues"
+  },
+  "homepage": "https://github.com/PlutonusCommissions/PlutoBot-MPP#readme"
+>>>>>>> master
 }

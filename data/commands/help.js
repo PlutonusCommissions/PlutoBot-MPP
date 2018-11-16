@@ -3,6 +3,10 @@ module.exports = {
     cooldown: 10,
     description: "Displays the bot's commands or info about a specific command.",
     usage: "[command]",
+<<<<<<< HEAD
+=======
+    admin: false,
+>>>>>>> master
     execute(client, message, args) {
         const { prefix } = require("../config.json");
 
@@ -16,7 +20,11 @@ module.exports = {
         }
 
         const name = args[0].toLowerCase();
+<<<<<<< HEAD
         const command = commands.get(name) || commands.find(c);
+=======
+        const command = commands.get(name) || commands.find(name);
+>>>>>>> master
 
         if(!command) {
             return client.sendChat(`'${name}' is not a valid command, ${msg.p.name}.`)
