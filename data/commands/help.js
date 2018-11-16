@@ -17,7 +17,7 @@ module.exports = {
         }
 
         const name = args[0].toLowerCase();
-        const command = commands.get(name) || commands.find(c);
+        const command = commands.get(name) || commands.find(name);
 
         if(!command) {
             return client.sendChat(`'${name}' is not a valid command, ${msg.p.name}.`)
