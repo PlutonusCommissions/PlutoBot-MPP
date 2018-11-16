@@ -1,6 +1,7 @@
 module.exports = async (client, msg) => {
     const chalk = require("chalk");
     const collection = require("../../PlutoBot/util/Collection");
+    client.cooldowns = new collection();
 
     if(!msg.a.startsWith(client.config.prefix)) return;
     var args = msg.a.slice(client.config.prefix.length).split(/ +/);

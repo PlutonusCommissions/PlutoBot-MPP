@@ -31,6 +31,5 @@ const init = async () => {
 
     client.start();
 }
-client.cooldowns = new collection();
 
 init();
