@@ -79,7 +79,7 @@ class Client extends EventEmitter {
 
             self.emit(Events.DEBUG, `Connected!`);
             await self.setRoom(self.options.room || "lobby");
-            self.sendChat("Ready!");
+            setTimeout(() => {self.sendChat("Ready!")}, 2000);
             self.emit(Events.READY);
         });
         this.ws.addEventListener("message", function(evt) {
