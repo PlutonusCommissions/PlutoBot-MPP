@@ -1,4 +1,5 @@
 module.exports = async (client, msg) => {
+    const chalk = require("chalk");
     const collection = require("../../PlutoBot/util/Collection");
 
     if(!msg.a.startsWith(client.config.prefix)) return;
@@ -8,7 +9,7 @@ module.exports = async (client, msg) => {
     if(!client.commands.has(command)) return;
 
     if(client.commands.get(command).admin) {
-        if(client.config.masters.indexOf(msg.p.name) < 0) return client.sendChat(`You don't have permission to use this command, ${msg.p.name}.`);
+        if(client.config.masters.indexOf(msg.p._id) < 0) return client.sendChat(`You don't have permission to use this command, ${msg.p.name}.`);
     }
 
     if(!client.cooldowns.has(command.name)) {
@@ -35,7 +36,7 @@ module.exports = async (client, msg) => {
 
     try {
         client.commands.get(command).execute(client, msg, args);
-        client.logger.log(`${msg.p.name} has executed the ${command.name} command.`, "exec");
+        client.logger.log(`${chalk.blue(msg.p.name)} has executed the ${chalk.blue(client.commands.get(command).name)} command.`, "exec");
     } catch(err) {
         console.log(err);
     }
