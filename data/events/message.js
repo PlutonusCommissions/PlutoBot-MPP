@@ -1,4 +1,6 @@
 module.exports = async (client, msg) => {
+    const collection = require("../../PlutoBot/util/Collection");
+
     if(!msg.a.startsWith(client.config.prefix)) return;
     var args = msg.a.slice(client.config.prefix.length).split(/ +/);
     var command = args.shift().toLowerCase();
@@ -27,12 +29,13 @@ module.exports = async (client, msg) => {
             return client.sendChat(`Please wait ${timeLeft.toFixed(1)} more seconds before using this command again, ${msg.p.name}.`);
         }
 
-        timestamps.set(msg.author.id, now);
+        timestamps.set(msg.p._id, now);
         setTimeout(() => timestamps.delete(msg.p._id), cooldownAmount)
     }
 
     try {
         client.commands.get(command).execute(client, msg, args);
+        client.logger.log(`${msg.p.name} has executed the ${command.name} command.`, "exec");
     } catch(err) {
         console.log(err);
     }
