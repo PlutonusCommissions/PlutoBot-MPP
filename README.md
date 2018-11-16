@@ -1,8 +1,11 @@
 # PlutoBot-MPP
-<<<<<<< HEAD
 A bot for multiplayerpiano.com.
 =======
 A simple bot for multiplayerpiano.com. Updated and maintained by Plutonus.
+
+## WARNING!
+__This is the development branch of PlutoBot, and as such, some features may be buggy or may not work entirely. This branch is simply for version control. Please use the [Master Branch](https://github.com/PlutonusCommissions/PlutoBot-MPP/tree/master).__
+*Continue at your own risk.*
 
 ## Requirements
 
