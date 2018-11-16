@@ -15,7 +15,7 @@ In a command prompt, or powershell, navigate to you projects folder (wherever th
 Once finished:
 
 - In the folder from where you ran the git command, run `cd PlutoBot-MPP` and then run `npm i`
-- **If you receive any errors during this process, make sure you meet the *Requirements* above!**
+- **If you receive any errors during this process, make sure you meet the *[Requirements](#requirements)* above!**
 - Edit `data/config.js` and fill in all the relevant details as indicated in the file's comments.
 
 ## Starting the bot
