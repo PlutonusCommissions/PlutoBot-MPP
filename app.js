@@ -4,7 +4,7 @@ const fs = require("fs");
 const PlutoBot = require("./PlutoBot/PlutoBot");
 const collection = require("./PlutoBot/util/Collection");
 
-const client = new PlutoBot.Client({ room: "test/PlutoDev" });
+const client = new PlutoBot.Client({ room: "lobby" });
 client.logger = require("./PlutoBot/util/Logger");
 client.config = require("./data/config.json");
 
