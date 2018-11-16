@@ -1,6 +1,8 @@
 # PlutoBot-MPP
 A simple bot for multiplayerpiano.com. Updated and maintained by Plutonus.
 
+[![Codefresh build status]( https://g.codefresh.io/api/badges/pipeline/plutonuscommissions_marketplace/PlutonusCommissions%2FPlutoBot-MPP%2FPlutoBot-MPP?branch=master&key=eyJhbGciOiJIUzI1NiJ9.NWJlZTUxMmRiZjc3ZTBiOWJiMWE5NjA3._HMpo37BpurDc6Ugx-ANdlkUyDancBNRRAIfhwE3In8&type=cf-2)]( https://g.codefresh.io/pipelines/PlutoBot-MPP/builds?repoOwner=PlutonusCommissions&repoName=PlutoBot-MPP&serviceName=PlutonusCommissions%2FPlutoBot-MPP&filter=trigger:build~Build;branch:master;pipeline:5bee51916c5eee7e10a18e8e~PlutoBot-MPP)
+
 ## Requirements
 
 - `git` command line ([Windows](https://git-scm.com/download/win)|[Linux](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)|[MacOS](https://git-scm.com/download/mac)) installed
