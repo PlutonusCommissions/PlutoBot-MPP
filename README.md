@@ -1,6 +1,4 @@
-# PlutoBot-MPP
-A bot for multiplayerpiano.com.
-=======
+# PlutoBot-MPP [DEVELOPMENT]
 A simple bot for multiplayerpiano.com. Updated and maintained by Plutonus.
 
 ## WARNING!
