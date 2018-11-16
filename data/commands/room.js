@@ -6,8 +6,9 @@ module.exports = {
     admin: true,
     async execute(client, message, args) {
         let oldRoom = client.room;
-        await client.sendChat(`Navigating to the ${args[0]} room...`);
-        await client.setRoom(args[0]);
-        client.sendChat(`I have moved from the '${oldRoom}' channel to this channel.`);
+        let newRoom = args[0].replace(/\%20/g, " ");
+        await client.sendChat(`Navigating to the ${newRoom} room...`);
+        client.setRoom(newRoom);
+        setTimeout(() => client.sendChat(`I have moved from the '${oldRoom}' channel to this channel.`), 1000);
     }
 }
